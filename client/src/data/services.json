@@ -1,0 +1,82 @@
+[
+  {
+    "id": "training-programs",
+    "title": "Training & Professional Development",
+    "description": "Accredited and non-accredited programs to help individuals and teams build real-world skills.",
+    "icon": "🎓",
+    "features": [
+      "Leadership and Management",
+      "Communication Skills", 
+      "Compliance and Regulatory Training",
+      "Workplace Wellbeing",
+      "Customised Training Solutions"
+    ],
+    "approach": [
+      "Learner-centred",
+      "Interactive and engaging",
+      "Tailored to organisational needs",
+      "Led by industry experts"
+    ],
+    "path": "/services/training-program"
+  },
+  {
+    "id": "consultancy-compliance",
+    "title": "Consultancy & Compliance",
+    "description": "Business policy development, documentation, audits, and strategic planning.",
+    "icon": "📋",
+    "features": [
+      "Policy Development",
+      "Documentation & Audits",
+      "Strategic Planning",
+      "Regulatory Compliance",
+      "Operational Clarity"
+    ],
+    "approach": [
+      "Measurable improvement focus",
+      "Operational clarity",
+      "Regulatory compliance",
+      "Strategic guidance"
+    ],
+    "path": "/services/consultancy-and-compliance"
+  },
+  {
+    "id": "coaching-mentoring",
+    "title": "Coaching & Mentoring",
+    "description": "Personalised sessions for individuals and workplace teams.",
+    "icon": "🤝",
+    "features": [
+      "Leadership Development",
+      "Confidence Building",
+      "Communication Skills",
+      "Emotional Intelligence",
+      "Purposeful Leadership"
+    ],
+    "approach": [
+      "Personalised sessions",
+      "Individual and team focus",
+      "Leadership building",
+      "Professional growth"
+    ],
+    "path": "/services/coaching-and-mentoring"
+  },
+  {
+    "id": "counselling-wellbeing",
+    "title": "Counselling & Wellbeing Support",
+    "description": "Confidential, compassionate support for mental health and career clarity.",
+    "icon": "💚",
+    "features": [
+      "Mental Health Support",
+      "Career Clarity",
+      "Work-Life Balance",
+      "Personal Growth",
+      "Workplace Wellbeing Programs"
+    ],
+    "approach": [
+      "Confidential support",
+      "Compassionate approach",
+      "Resilience building",
+      "Personal growth focus"
+    ],
+    "path": "/services/counselling-and-wellbeing-support"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "years-experience",
+    "value": "20+",
+    "label": "Years of Experience",
+    "description": "Over two decades of expertise in education, training, and business consultancy"
+  },
+  {
+    "id": "clients-served",
+    "value": "1000+",
+    "label": "Clients Supported",
+    "description": "Individuals, workplaces, and organisations who have benefited from our services"
+  },
+  {
+    "id": "organisations",
+    "value": "50+",
+    "label": "Organisations",
+    "description": "Companies across Australia that trust us with their training and development needs"
+  },
+  {
+    "id": "success-rate",
+    "value": "98%",
+    "label": "Success Rate",
+    "description": "Client satisfaction and successful program completion rate"
+  }
+]

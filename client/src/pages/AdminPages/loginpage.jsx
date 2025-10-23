@@ -1,95 +1,8 @@
 import React, { useState } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
-import { useAuth } from '../../context/AuthContext';
+import { Navigate, useLocation } from 'react-router';
+import { motion } from 'motion/react';
+import { useAuth } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
-
-const LoginContainer = styled.div`
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
-  padding: 20px;
-`;
-
-const LoginCard = styled.div`
-  background: white;
-  border-radius: 12px;
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-`;
-
-const Logo = styled.div`
-  text-align: center;
-  margin-bottom: 30px;
-  
-  h1 {
-    color: #4CAF50;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    color: #666;
-    font-size: 0.9rem;
-  }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const Label = styled.label`
-  font-weight: 600;
-  color: #333;
-  font-size: 0.9rem;
-`;
-
-const Input = styled.input`
-  padding: 12px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-
-  &:focus {
-    outline: none;
-    border-color: #4CAF50;
-  }
-`;
-
-const Button = styled.button`
-  background: #4CAF50;
-  color: white;
-  padding: 14px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: #2E7D32;
-  }
-
-  &:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-`;
 
 export default function AdminLoginPage() {
     const [formData, setFormData] = useState({
@@ -133,17 +46,37 @@ export default function AdminLoginPage() {
     };
 
     return (
-        <LoginContainer>
-            <LoginCard>
-                <Logo>
-                    <h1>Invictus Solutions</h1>
-                    <p>Admin Panel</p>
-                </Logo>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-500 to-primary-700 p-5">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="bg-white rounded-3xl p-10 w-full max-w-md shadow-strong"
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="text-center mb-8"
+                >
+                    <h1 className="text-primary-600 text-3xl font-bold mb-2 font-heading">
+                        Invictus Solutions
+                    </h1>
+                    <p className="text-neutral-600 text-sm">Admin Panel</p>
+                </motion.div>
 
-                <Form onSubmit={handleSubmit}>
-                    <FormGroup>
-                        <Label htmlFor="username">Username</Label>
-                        <Input
+                <motion.form
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                >
+                    <div className="space-y-2">
+                        <label htmlFor="username" className="block text-sm font-semibold text-neutral-700">
+                            Username
+                        </label>
+                        <input
                             type="text"
                             id="username"
                             name="username"
@@ -151,12 +84,15 @@ export default function AdminLoginPage() {
                             onChange={handleChange}
                             required
                             disabled={loading}
+                            className="w-full px-4 py-3 border-2 border-neutral-200 rounded-xl text-base transition-colors duration-300 focus:outline-none focus:border-primary-500 disabled:bg-neutral-100 disabled:cursor-not-allowed"
                         />
-                    </FormGroup>
+                    </div>
 
-                    <FormGroup>
-                        <Label htmlFor="password">Password</Label>
-                        <Input
+                    <div className="space-y-2">
+                        <label htmlFor="password" className="block text-sm font-semibold text-neutral-700">
+                            Password
+                        </label>
+                        <input
                             type="password"
                             id="password"
                             name="password"
@@ -164,15 +100,22 @@ export default function AdminLoginPage() {
                             onChange={handleChange}
                             required
                             disabled={loading}
+                            className="w-full px-4 py-3 border-2 border-neutral-200 rounded-xl text-base transition-colors duration-300 focus:outline-none focus:border-primary-500 disabled:bg-neutral-100 disabled:cursor-not-allowed"
                         />
-                    </FormGroup>
+                    </div>
 
-                    <Button type="submit" disabled={loading}>
+                    <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        type="submit"
+                        disabled={loading}
+                        className="w-full bg-primary-500 text-white py-4 rounded-xl font-semibold text-base transition-colors duration-300 hover:bg-primary-600 disabled:bg-neutral-400 disabled:cursor-not-allowed shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40"
+                    >
                         {loading ? 'Signing In...' : 'Sign In'}
-                    </Button>
-                </Form>
-            </LoginCard>
-        </LoginContainer>
+                    </motion.button>
+                </motion.form>
+            </motion.div>
+        </div>
     );
 };
 

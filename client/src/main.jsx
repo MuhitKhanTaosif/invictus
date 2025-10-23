@@ -7,7 +7,6 @@ import {
 } from "react-router";
 
 import './index.css'
-import App from './App.jsx'
 import { AuthProvider } from './Context/AuthContext.jsx';
 
 //Layout
@@ -40,7 +39,7 @@ import AdminCategoriesPage from './pages/AdminPages/Categories.jsx';
 import AdminCourses from './pages/AdminPages/Courses.jsx';
 
 //-------Loader
-import { adminCheck } from './Loader/adminCheck.js';
+import { adminCheck } from './Loader/adminCheck.jsx';
 
 const router = createBrowserRouter([
   {

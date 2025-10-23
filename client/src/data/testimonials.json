@@ -1,0 +1,56 @@
+[
+  {
+    "id": "testimonial-1",
+    "name": "Sarah Mitchell",
+    "role": "HR Director",
+    "company": "TechCorp Australia",
+    "content": "Invictus Consultants transformed our workplace culture through their comprehensive wellbeing program. The training was engaging, practical, and our employees are more motivated than ever.",
+    "rating": 5,
+    "image": "/images/testimonials/sarah-mitchell.jpg"
+  },
+  {
+    "id": "testimonial-2", 
+    "name": "David Chen",
+    "role": "Operations Manager",
+    "company": "Manufacturing Solutions Ltd",
+    "content": "The first aid training provided by Invictus was exceptional. Our team now feels confident and prepared to handle any emergency situation. Highly recommended!",
+    "rating": 5,
+    "image": "/images/testimonials/david-chen.jpg"
+  },
+  {
+    "id": "testimonial-3",
+    "name": "Emma Thompson",
+    "role": "CEO",
+    "company": "Startup Innovations",
+    "content": "The leadership development program helped our management team develop essential skills for growth. The personalized approach made all the difference.",
+    "rating": 5,
+    "image": "/images/testimonials/emma-thompson.jpg"
+  },
+  {
+    "id": "testimonial-4",
+    "name": "Michael Rodriguez",
+    "role": "Safety Coordinator",
+    "company": "Construction Group",
+    "content": "Outstanding compliance training that actually engaged our workforce. The practical approach and real-world examples made complex regulations easy to understand.",
+    "rating": 5,
+    "image": "/images/testimonials/michael-rodriguez.jpg"
+  },
+  {
+    "id": "testimonial-5",
+    "name": "Lisa Johnson",
+    "role": "Team Lead",
+    "company": "Healthcare Services",
+    "content": "The mental health support training was a game-changer for our team. We now have the tools and confidence to support each other through challenging times.",
+    "rating": 5,
+    "image": "/images/testimonials/lisa-johnson.jpg"
+  },
+  {
+    "id": "testimonial-6",
+    "name": "James Wilson",
+    "role": "General Manager",
+    "company": "Retail Chain",
+    "content": "Professional, knowledgeable, and results-driven. Invictus Consultants delivered exactly what we needed to improve our organizational effectiveness.",
+    "rating": 5,
+    "image": "/images/testimonials/james-wilson.jpg"
+  }
+]

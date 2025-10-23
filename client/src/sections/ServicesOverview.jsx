@@ -1,128 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-
-const ServicesContainer = styled.section`
-  background: #f8f9fa;
-  padding: 100px 0;
-`;
-
-const ServicesContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
-
-const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: 80px;
-`;
-
-const SectionTitle = styled(motion.h2)`
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-`;
-
-const SectionSubtitle = styled(motion.p)`
-  font-size: 1.2rem;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-`;
-
-const ServicesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 60px;
-`;
-
-const ServiceCard = styled(motion.div)`
-  background: white;
-  border-radius: 12px;
-  padding: 40px 30px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border: 1px solid #f0f0f0;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
-    border-color: #FFD700;
-  }
-`;
-
-const ServiceIcon = styled.div`
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #FFD700, #B8860B);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 25px;
-  font-size: 2rem;
-  color: #000000;
-`;
-
-const ServiceTitle = styled.h3`
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 15px;
-`;
-
-const ServiceDescription = styled.p`
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 25px;
-`;
-
-const ServiceLink = styled(Link)`
-  color: #FFD700;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #B8860B;
-  }
-`;
+import React, { useRef } from 'react';
+import { Link } from 'react-router';
+import { motion, useInView } from 'motion/react';
 
 const services = [
     {
-        icon: '💼',
-        title: 'Business Consulting',
-        description: 'Strategic business consulting services to help organizations optimize operations and achieve sustainable growth.',
-        link: '/services/business-consulting'
+        icon: '🎓',
+        title: 'Training & Professional Development',
+        description: 'Accredited and non-accredited programs to help individuals and teams build real-world skills.',
+        link: '/services/training-program'
     },
     {
-        icon: '🎓',
-        title: 'Training Programs',
-        description: 'Comprehensive training programs designed to enhance skills, knowledge, and professional development.',
-        link: '/training-programs'
+        icon: '📋',
+        title: 'Consultancy & Compliance',
+        description: 'Business policy development, documentation, audits, and strategic planning.',
+        link: '/services/consultancy-and-compliance'
     },
     {
         icon: '🤝',
-        title: 'Mentoring & Coaching',
-        description: 'Personalized mentoring and coaching services to support individual growth and career development.',
-        link: '/services/mentoring-coaching'
+        title: 'Coaching & Mentoring',
+        description: 'Personalized one-on-one mentoring and coaching sessions to unlock your potential.',
+        link: '/services/coaching-and-mentoring'
     },
     {
-        icon: '💬',
-        title: 'Counselling',
-        description: 'Professional counselling services providing confidential support for mental health and emotional well-being.',
-        link: '/services/counselling'
+        icon: '💚',
+        title: 'Counselling & Wellbeing Support',
+        description: 'Confidential, compassionate support for mental health and career clarity.',
+        link: '/services/counselling-and-wellbeing-support'
     }
 ];
 
@@ -131,20 +34,30 @@ const ServiceCardComponent = ({ service, index }) => {
     const isInView = useInView(ref, { once: true });
 
     return (
-        <ServiceCard
+        <motion.div
             ref={ref}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
+            className="bg-white rounded-2xl p-8 text-center shadow-soft border border-neutral-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-medium hover:border-primary-300"
         >
-            <ServiceIcon>{service.icon}</ServiceIcon>
-            <ServiceTitle>{service.title}</ServiceTitle>
-            <ServiceDescription>{service.description}</ServiceDescription>
-            <ServiceLink to={service.link}>
+            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl text-white">
+                {service.icon}
+            </div>
+            <h3 className="text-xl font-semibold text-neutral-800 mb-4 font-heading">
+                {service.title}
+            </h3>
+            <p className="text-neutral-600 leading-relaxed mb-6">
+                {service.description}
+            </p>
+            <Link
+                to={service.link}
+                className="text-primary-600 font-semibold inline-flex items-center gap-2 transition-colors duration-300 hover:text-primary-700"
+            >
                 Learn More <span>→</span>
-            </ServiceLink>
-        </ServiceCard>
+            </Link>
+        </motion.div>
     );
 };
 
@@ -153,33 +66,35 @@ const ServicesOverview = () => {
     const isInView = useInView(ref, { once: true });
 
     return (
-        <ServicesContainer>
-            <ServicesContent>
-                <SectionHeader>
-                    <SectionTitle
+        <section className="bg-gradient-calm py-24">
+            <div className="max-w-7xl mx-auto px-5">
+                <div className="text-center mb-20">
+                    <motion.h2
                         ref={ref}
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                         transition={{ duration: 0.8 }}
+                        className="text-4xl md:text-5xl font-bold text-neutral-800 mb-6 font-heading"
                     >
                         Our Services
-                    </SectionTitle>
-                    <SectionSubtitle
+                    </motion.h2>
+                    <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed"
                     >
                         Tailored Support for Every Journey
-                    </SectionSubtitle>
-                </SectionHeader>
+                    </motion.p>
+                </div>
 
-                <ServicesGrid>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {services.map((service, index) => (
                         <ServiceCardComponent key={service.title} service={service} index={index} />
                     ))}
-                </ServicesGrid>
-            </ServicesContent>
-        </ServicesContainer>
+                </div>
+            </div>
+        </section>
     );
 };
 

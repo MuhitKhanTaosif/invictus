@@ -1,202 +1,131 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const FooterContainer = styled.footer`
-  background: #000000;
-  color: #FFD700;
-  padding: 60px 0 20px;
-`;
-
-const FooterContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-`;
-
-const FooterSection = styled.div`
-  h3 {
-    color: #FFD700;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-`;
-
-const FooterLinks = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const FooterLink = styled(Link)`
-  color: #bdc3c7;
-  text-decoration: none;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #FFD700;
-  }
-`;
-
-const ContactInfo = styled.div`
-  p {
-    margin-bottom: 10px;
-    color: #bdc3c7;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-`;
-
-const SocialLink = styled.a`
-  width: 40px;
-  height: 40px;
-  background: #FFD700;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  text-decoration: none;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: #B8860B;
-    color: #FFFFFF;
-    transform: translateY(-2px);
-  }
-`;
-
-const Newsletter = styled.div`
-  input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #34495e;
-    border-radius: 6px;
-    background: #34495e;
-    color: white;
-    margin-bottom: 10px;
-
-    &::placeholder {
-      color: #bdc3c7;
-    }
-  }
-
-  button {
-    width: 100%;
-    padding: 12px;
-    background: #FFD700;
-    color: #000000;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease;
-
-    &:hover {
-      background: #B8860B;
-      color: #FFFFFF;
-    }
-  }
-`;
-
-const FooterBottom = styled.div`
-  border-top: 1px solid #333333;
-  padding-top: 20px;
-  text-align: center;
-  color: #999999;
-  font-size: 0.9rem;
-
-  @media (max-width: 768px) {
-    text-align: left;
-  }
-`;
+import { Link } from 'react-router';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <FooterContainer>
-      <FooterContent>
-        <FooterSection>
-          <h3>Invictus Solutions</h3>
-          <p style={{ color: '#bdc3c7', lineHeight: '1.6' }}>
-            Tailored programs, mentoring, and strategic support that uplift the Self,
-            Community and Ummah. We deliver practical, purpose-driven services that
-            support individuals, schools, organisations, and communities.
-          </p>
-          <SocialLinks>
-            <SocialLink href="#" aria-label="Facebook">📘</SocialLink>
-            <SocialLink href="#" aria-label="Twitter">🐦</SocialLink>
-            <SocialLink href="#" aria-label="LinkedIn">💼</SocialLink>
-            <SocialLink href="#" aria-label="Instagram">📷</SocialLink>
-          </SocialLinks>
-        </FooterSection>
-
-        <FooterSection>
-          <h3>Navigation</h3>
-          <FooterLinks>
-            <FooterLink to="/">Home</FooterLink>
-            <FooterLink to="/about">About Us</FooterLink>
-            <FooterLink to="/services">Services</FooterLink>
-            <FooterLink to="/training-programs">Training Programs</FooterLink>
-            <FooterLink to="/blog">Blogs</FooterLink>
-            <FooterLink to="/contact">Contact Us</FooterLink>
-          </FooterLinks>
-        </FooterSection>
-
-        <FooterSection>
-          <h3>Services</h3>
-          <FooterLinks>
-            <FooterLink to="/services/business-consulting">Business Consulting</FooterLink>
-            <FooterLink to="/training-programs">Training Programs</FooterLink>
-            <FooterLink to="/services/mentoring-coaching">Mentoring & Coaching</FooterLink>
-            <FooterLink to="/services/counselling">Counselling</FooterLink>
-          </FooterLinks>
-        </FooterSection>
-
-        <FooterSection>
-          <h3>Contact Info</h3>
-          <ContactInfo>
-            <p>📍 Sydney, Australia</p>
-            <p>📧 hello@invictussolutions.com.au</p>
-            <p>📞 1300 INVICTUS</p>
-          </ContactInfo>
-
-          <Newsletter>
-            <h4 style={{ color: '#4CAF50', marginBottom: '15px' }}>
-              Subscribe to Invictus Solutions
-            </h4>
-            <input type="email" placeholder="Your email address" />
-            <button type="button">Subscribe</button>
-          </Newsletter>
-        </FooterSection>
-      </FooterContent>
-
-      <FooterBottom>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              © {currentYear} Invictus Solutions. All rights reserved.
+    <footer className="bg-neutral-900 text-primary-50 py-16">
+      <div className="max-w-7xl mx-auto px-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <h3 className="text-primary-400 text-xl font-heading font-semibold">Invictus Consultants</h3>
+            <p className="text-neutral-300 leading-relaxed">
+              Empowering Growth. Inspiring Change. We provide tailored training, consultancy, 
+              coaching, mentoring, and counselling services to help individuals and 
+              organisations reach their full potential.
+            </p>
+            <div className="flex gap-4 mt-6">
+              <a href="#" aria-label="LinkedIn" className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-neutral-900 hover:bg-primary-600 hover:-translate-y-1 transition-all duration-300">
+                💼
+              </a>
+              <a href="#" aria-label="Facebook" className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-neutral-900 hover:bg-primary-600 hover:-translate-y-1 transition-all duration-300">
+                📘
+              </a>
+              <a href="#" aria-label="Instagram" className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-neutral-900 hover:bg-primary-600 hover:-translate-y-1 transition-all duration-300">
+                📷
+              </a>
             </div>
-            <div style={{ display: 'flex', gap: '20px' }}>
-              <FooterLink to="/privacy" style={{ fontSize: '0.9rem' }}>Privacy Policy</FooterLink>
-              <FooterLink to="/terms" style={{ fontSize: '0.9rem' }}>Terms of Service</FooterLink>
+          </div>
+
+          {/* Navigation */}
+          <div className="space-y-4">
+            <h3 className="text-primary-400 text-xl font-heading font-semibold">Navigation</h3>
+            <div className="flex flex-col gap-3">
+              <Link to="/" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Home
+              </Link>
+              <Link to="/about-us" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                About Us
+              </Link>
+              <Link to="/services" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Services
+              </Link>
+              <Link to="/services/training-program" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Training Programs
+              </Link>
+              <Link to="/blogs" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Blogs
+              </Link>
+              <Link to="/contact" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Contact Us
+              </Link>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-4">
+            <h3 className="text-primary-400 text-xl font-heading font-semibold">Services</h3>
+            <div className="flex flex-col gap-3">
+              <Link to="/services/consultancy-and-compliance" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Consultancy & Compliance
+              </Link>
+              <Link to="/services/training-program" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Training Programs
+              </Link>
+              <Link to="/services/coaching-and-mentoring" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Coaching & Mentoring
+              </Link>
+              <Link to="/services/counselling-and-wellbeing-support" className="text-neutral-300 hover:text-primary-400 transition-colors duration-300">
+                Counselling & Wellbeing
+              </Link>
+            </div>
+          </div>
+
+          {/* Contact & Newsletter */}
+          <div className="space-y-4">
+            <h3 className="text-primary-400 text-xl font-heading font-semibold">Contact Info</h3>
+            <div className="space-y-3">
+              <p className="text-neutral-300 flex items-center gap-3">
+                📍 Sydney, Australia
+              </p>
+              <p className="text-neutral-300 flex items-center gap-3">
+                📧 info@invictusconsultants.com.au
+              </p>
+              <p className="text-neutral-300 flex items-center gap-3">
+                📞 0490 132 692
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <h4 className="text-sage-400 text-lg font-semibold mb-4">
+                Subscribe to Updates
+              </h4>
+              <div className="space-y-3">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                />
+                <button 
+                  type="button"
+                  className="w-full px-4 py-3 bg-primary-500 text-neutral-900 font-semibold rounded-lg hover:bg-primary-600 transition-colors duration-300"
+                >
+                  Subscribe
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </FooterBottom>
-    </FooterContainer>
+
+        {/* Footer Bottom */}
+        <div className="border-t border-neutral-800 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-neutral-400 text-sm">
+              © {currentYear} Invictus Consultants. All rights reserved.
+            </div>
+            <div className="flex gap-6">
+              <Link to="/privacy" className="text-neutral-400 hover:text-primary-400 text-sm transition-colors duration-300">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-neutral-400 hover:text-primary-400 text-sm transition-colors duration-300">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };

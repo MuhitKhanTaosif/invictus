@@ -1,157 +1,83 @@
 import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
-const TrainingContainer = styled.section`
-  background: #f8f9fa;
-  padding: 100px 0;
-`;
-
-const TrainingContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
-
-const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: 60px;
-`;
-
-const SectionTitle = styled(motion.h2)`
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-`;
-
-const SectionSubtitle = styled(motion.p)`
-  font-size: 1.2rem;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-`;
-
-const TrainingGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-`;
-
-const TrainingCard = styled(motion.div)`
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border-left: 4px solid #FFD700;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
-  }
-`;
-
-const TrainingIcon = styled.div`
-  color: #FFD700;
-  font-weight: 600;
-  font-size: 2rem;
-  margin-bottom: 15px;
-`;
-
-const TrainingTitle = styled.h3`
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 15px;
-  line-height: 1.4;
-`;
-
-const TrainingDescription = styled.p`
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
-`;
-
-const TrainingLink = styled.a`
-  color: #FFD700;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #B8860B;
-  }
-`;
+import { Link } from 'react-router';
+import { motion } from 'motion/react';
 
 const trainingPrograms = [
     {
         icon: '🩹',
-        title: 'First Aid Training',
-        description: 'Comprehensive first aid training programs designed to equip individuals with life-saving skills and emergency response knowledge.',
-        link: '/training-programs'
+        title: 'First Aid & Mental Health Training',
+        description: 'Comprehensive first aid training programs including CPR, emergency life support, and mental health support in workplace and community settings.',
+        link: '/services/training-program/first-aid-and-mental-health-training-programs'
     },
     {
         icon: '👥',
         title: 'Leadership & Management',
         description: 'Develop essential leadership skills and management capabilities to drive team success and organizational growth.',
-        link: '/training-programs'
+        link: '/services/training-program'
     },
     {
-        icon: '🛡️',
-        title: 'Workplace Safety',
-        description: 'Ensure workplace safety compliance and create a secure environment for all employees through comprehensive safety training.',
-        link: '/training-programs'
+        icon: '💼',
+        title: 'Professional Development',
+        description: 'Enhance communication skills, workplace wellbeing, and compliance training to support professional growth and organizational excellence.',
+        link: '/services/training-program'
     }
 ];
 
 const EventsSection = () => {
     return (
-        <TrainingContainer>
-            <TrainingContent>
-                <SectionHeader>
-                    <SectionTitle
+        <section className="bg-gradient-calm py-24">
+            <div className="max-w-7xl mx-auto px-5">
+                <div className="text-center mb-16">
+                    <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-bold text-neutral-800 mb-6 font-heading"
                     >
                         Featured Training Programs
-                    </SectionTitle>
-                    <SectionSubtitle
+                    </motion.h2>
+                    <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                         viewport={{ once: true }}
+                        className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed"
                     >
                         Professional Development and Skill Enhancement
-                    </SectionSubtitle>
-                </SectionHeader>
+                    </motion.p>
+                </div>
 
-                <TrainingGrid>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {trainingPrograms.map((program, index) => (
-                        <TrainingCard
+                        <motion.div
                             key={program.title}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             viewport={{ once: true }}
+                            className="bg-white rounded-2xl p-8 shadow-soft border-l-4 border-primary-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-medium"
                         >
-                            <TrainingIcon>{program.icon}</TrainingIcon>
-                            <TrainingTitle>{program.title}</TrainingTitle>
-                            <TrainingDescription>{program.description}</TrainingDescription>
-                            <TrainingLink href={program.link}>
+                            <div className="text-4xl mb-4 text-primary-600">
+                                {program.icon}
+                            </div>
+                            <h3 className="text-xl font-semibold text-neutral-800 mb-4 font-heading">
+                                {program.title}
+                            </h3>
+                            <p className="text-neutral-600 leading-relaxed mb-6">
+                                {program.description}
+                            </p>
+                            <Link
+                                to={program.link}
+                                className="text-primary-600 font-semibold inline-flex items-center gap-2 transition-colors duration-300 hover:text-primary-700"
+                            >
                                 Learn More <span>→</span>
-                            </TrainingLink>
-                        </TrainingCard>
+                            </Link>
+                        </motion.div>
                     ))}
-                </TrainingGrid>
-            </TrainingContent>
-        </TrainingContainer>
+                </div>
+            </div>
+        </section>
     );
 };
 

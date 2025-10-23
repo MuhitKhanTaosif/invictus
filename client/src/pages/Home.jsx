@@ -1,19 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import HeroSection from '../components/home/HeroSection';
-import StatsSection from '../components/home/StatsSection';
-import ServicesOverview from '../components/home/ServicesOverview';
-import ApproachSection from '../components/home/ApproachSection';
-import EventsSection from '../components/home/EventsSection';
-import TestimonialsSection from '../components/home/TestimonialsSection';
-import CTASection from '../components/home/CTASection';
-
-const HomePageContainer = styled.div`
-  /* No padding-top needed with floating header */
-`;
-
-import { useState, useEffect } from 'react';
-import Preloader from '../components/Preloader';
+import React, { useState, useEffect } from 'react';
+import HeroSection from '../sections/HeroSection';
+import StatsSection from '../sections/StatsSection';
+import ServicesOverview from '../sections/ServicesOverview';
+import ApproachSection from '../sections/ApproachScrtion';
+import EventsSection from '../sections/EventsSection';
+import TestimonialsSection from '../sections/Testimonial';
+import CTASection from '../sections/CTASection';
+import Preload from '../components/Preload';
 
 
 export default function Home() {
@@ -38,12 +31,11 @@ export default function Home() {
     }, []);
 
     if (isLoading) {
-        return <Preloader />;
+        return <Preload />;
     }
 
-
     return (
-        <HomePageContainer>
+        <div>
             <HeroSection />
             <StatsSection />
             <ServicesOverview />
@@ -51,6 +43,6 @@ export default function Home() {
             <EventsSection />
             <TestimonialsSection />
             <CTASection />
-        </HomePageContainer>
+        </div>
     );
 };

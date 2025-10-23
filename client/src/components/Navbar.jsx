@@ -44,33 +44,33 @@ export default function Navbar() {
             path: '/services',
             dropdown: [
                 {
-                    label: 'Business Consulting',
-                    path: '/services/business-consulting',
-                    image: '/Milestones of business projects-cuate.png',
-                    description: 'Strategic guidance and expert advice to help your business grow, optimize operations, and achieve sustainable success.'
-                },
-                {
                     label: 'Training Programs',
-                    path: '/training-programs',
+                    path: '/services/training-program',
                     image: '/Milestones of business projects-cuate.png',
                     description: 'Comprehensive skill development programs designed to enhance your team\'s capabilities and drive organizational excellence.'
                 },
                 {
-                    label: 'Mentoring & Coaching',
-                    path: '/services/mentoring-coaching',
+                    label: 'Consultancy & Compliance',
+                    path: '/services/consultancy-and-compliance',
+                    image: '/Milestones of business projects-cuate.png',
+                    description: 'Strategic guidance and expert advice to help your business grow, optimize operations, and achieve sustainable success.'
+                },
+                {
+                    label: 'Coaching & Mentoring',
+                    path: '/services/coaching-and-mentoring',
                     image: '/Milestones of business projects-cuate.png',
                     description: 'Personalized one-on-one mentoring and coaching sessions to unlock your potential and accelerate professional growth.'
                 },
                 {
-                    label: 'Counselling',
-                    path: '/services/counselling',
+                    label: 'Counselling & Wellbeing',
+                    path: '/services/counselling-and-wellbeing-support',
                     image: '/Milestones of business projects-cuate.png',
                     description: 'Professional counselling services to support mental health, work-life balance, and personal development.'
                 }
             ]
         },
-        { label: 'Blog', path: '/blog' },
-        { label: 'About Us', path: '/about' },
+        { label: 'Blogs', path: '/blogs' },
+        { label: 'About Us', path: '/about-us' },
         { label: 'Contact', path: '/contact' }
     ];
 
@@ -85,14 +85,14 @@ export default function Navbar() {
             )}
 
             {/* Header */}
-            <header className="fixed top-0 left-0 right-0 z-[1001] w-full bg-white/95 backdrop-blur-xl shadow-lg border-b border-white/20 transition-all duration-300">
+            <header className="fixed top-0 left-0 right-0 z-[1001] w-full bg-white/95 backdrop-blur-xl shadow-lg border-b border-neutral-200 transition-all duration-300">
                 <nav className="flex justify-between items-center h-[70px] px-8 max-w-7xl mx-auto">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-3 text-yellow-500 no-underline">
-                        <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-lg flex items-center justify-center text-black font-bold text-xl">
+                    <Link to="/" className="flex items-center gap-3 text-primary-600 no-underline">
+                        <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center text-white font-bold text-xl">
                             I
                         </div>
-                        <span className="text-3xl font-bold">Invictus Solutions</span>
+                        <span className="text-3xl font-bold font-heading">Invictus Consultants</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -115,10 +115,10 @@ export default function Navbar() {
                                         <Link
                                             to={item.path}
                                             className={`
-                        text-gray-800 no-underline font-semibold text-sm whitespace-nowrap 
+                        text-neutral-800 no-underline font-semibold text-sm whitespace-nowrap 
                         px-4 py-2 rounded-lg flex items-center gap-1 transition-all duration-300
-                        hover:text-yellow-500 hover:bg-yellow-500/10
-                        ${location.pathname.startsWith(item.path) ? 'text-yellow-500 bg-yellow-500/15' : ''}
+                        hover:text-primary-500 hover:bg-primary-50
+                        ${location.pathname.startsWith(item.path) ? 'text-primary-500 bg-primary-50' : ''}
                       `}
                                         >
                                             {item.label}
@@ -132,7 +132,7 @@ export default function Navbar() {
                                         {/* Dropdown Menu */}
                                         {activeDropdown === item.label && (
                                             <div
-                                                className="absolute top-[calc(100%+10px)] left-0 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-5 w-[70vw] max-w-[840px] z-[1002] animate-in fade-in slide-in-from-top-2 duration-200"
+                                                className="absolute top-[calc(100%+10px)] left-0 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-neutral-200 p-5 w-[70vw] max-w-[840px] z-[1002] animate-in fade-in slide-in-from-top-2 duration-200"
                                                 onMouseEnter={() => setIsDropdownHovered(true)}
                                                 onMouseLeave={() => setIsDropdownHovered(false)}
                                             >
@@ -141,20 +141,20 @@ export default function Navbar() {
                                                         <li key={dropdownItem.label} className="flex-1 min-w-[200px] max-w-[300px]">
                                                             <Link
                                                                 to={dropdownItem.path}
-                                                                className="flex items-start p-6 text-gray-800 no-underline font-medium text-base transition-all duration-300 rounded-2xl bg-white/90 border border-black/5 gap-5 min-h-[120px] hover:bg-yellow-500/15 hover:text-yellow-500 hover:-translate-y-1 hover:shadow-xl"
+                                                                className="flex items-start p-6 text-neutral-800 no-underline font-medium text-base transition-all duration-300 rounded-2xl bg-white/90 border border-neutral-200 gap-5 min-h-[120px] hover:bg-primary-50 hover:text-primary-600 hover:-translate-y-1 hover:shadow-xl"
                                                             >
                                                                 <div className="flex-1 flex flex-col gap-2">
-                                                                    <h3 className="m-0 text-lg font-semibold text-gray-800 leading-tight">
+                                                                    <h3 className="m-0 text-lg font-semibold text-neutral-800 leading-tight">
                                                                         {dropdownItem.label}
                                                                     </h3>
-                                                                    <p className="m-0 text-sm text-gray-600 leading-relaxed flex-1">
+                                                                    <p className="m-0 text-sm text-neutral-600 leading-relaxed flex-1">
                                                                         {dropdownItem.description}
                                                                     </p>
                                                                 </div>
                                                                 <img
                                                                     src={dropdownItem.image}
                                                                     alt={dropdownItem.label}
-                                                                    className="w-20 h-20 object-cover rounded-xl flex-shrink-0 border-2 border-yellow-500/20"
+                                                                    className="w-20 h-20 object-cover rounded-xl flex-shrink-0 border-2 border-primary-200"
                                                                     onError={(e) => {
                                                                         e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik00MCA0MEM0OC4yODQzIDQwIDU1IDMzLjI4NDMgNTUgMjVDNTUgMTYuNzE1NyA0OC4yODQzIDEwIDQwIDEwQzMxLjcxNTcgMTAgMjUgMTYuNzE1NyAyNSAyNUMyNSAzMy4yODQzIDMxLjcxNTcgNDAgNDAgNDBaIiBmaWxsPSIjQ0NDQ0NDIi8+CjxwYXRoIGQ9Ik00MCAzMkM0NC40MTg2IDMyIDQ4IDI4LjQxODYgNDggMjRDNDggMTkuNTgxNCA0NC40MTg2IDE2IDQwIDE2QzM1LjU4MTQgMTYgMzIgMTkuNTgxNCAzMiAyNEMzMiAyOC40MTg2IDM1LjU4MTQgMzIgNDAgMzJaIiBmaWxsPSIjOTk5OTk5Ii8+Cjwvc3ZnPgo=';
                                                                     }}
@@ -170,10 +170,10 @@ export default function Navbar() {
                                     <Link
                                         to={item.path}
                                         className={`
-                      text-gray-800 no-underline font-semibold text-sm whitespace-nowrap 
+                      text-neutral-800 no-underline font-semibold text-sm whitespace-nowrap 
                       px-4 py-2 rounded-lg flex items-center gap-1 transition-all duration-300
-                      hover:text-yellow-500 hover:bg-yellow-500/10
-                      ${location.pathname === item.path ? 'text-yellow-500 bg-yellow-500/15' : ''}
+                      hover:text-primary-500 hover:bg-primary-50
+                      ${location.pathname === item.path ? 'text-primary-500 bg-primary-50' : ''}
                     `}
                                     >
                                         {item.label}
@@ -182,8 +182,8 @@ export default function Navbar() {
                             </div>
                         ))}
                         <Link
-                            to="/book-consultation"
-                            className="bg-gradient-to-br from-yellow-500 to-yellow-700 text-black px-6 py-3 rounded-xl no-underline font-semibold text-sm whitespace-nowrap shadow-lg shadow-yellow-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-yellow-500/40"
+                            to="/services/consultancy-and-compliance/book-consultation"
+                            className="bg-gradient-to-br from-primary-500 to-primary-700 text-white px-6 py-3 rounded-xl no-underline font-semibold text-sm whitespace-nowrap shadow-lg shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-500/40"
                         >
                             Book a Consult
                         </Link>
@@ -192,7 +192,7 @@ export default function Navbar() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden bg-transparent border-none text-2xl text-gray-800 cursor-pointer"
+                        className="md:hidden bg-transparent border-none text-2xl text-neutral-800 cursor-pointer"
                     >
                         ☰
                     </button>
@@ -201,13 +201,13 @@ export default function Navbar() {
                 {/* Mobile Menu */}
                 {mobileMenuOpen && (
                     <div
-                        className="fixed top-20 left-0 right-0 bg-white border-t border-gray-200 p-5 z-[999] animate-in fade-in slide-in-from-top duration-300"
+                        className="fixed top-20 left-0 right-0 bg-white border-t border-neutral-200 p-5 z-[999] animate-in fade-in slide-in-from-top duration-300"
                     >
                         {navItems.map((item) => (
                             <div key={item.label}>
                                 <Link
                                     to={item.path}
-                                    className="block py-4 text-gray-800 no-underline font-medium border-b border-gray-100 hover:text-yellow-500 transition-colors"
+                                    className="block py-4 text-neutral-800 no-underline font-medium border-b border-neutral-100 hover:text-primary-500 transition-colors"
                                 >
                                     {item.label}
                                 </Link>
@@ -217,7 +217,7 @@ export default function Navbar() {
                                             <Link
                                                 key={dropdownItem.label}
                                                 to={dropdownItem.path}
-                                                className="block py-4 text-gray-800 no-underline font-medium border-b border-gray-100 hover:text-yellow-500 transition-colors"
+                                                className="block py-4 text-neutral-800 no-underline font-medium border-b border-neutral-100 hover:text-primary-500 transition-colors"
                                             >
                                                 {dropdownItem.label}
                                             </Link>
@@ -228,8 +228,8 @@ export default function Navbar() {
                         ))}
                         <div className="mt-5">
                             <Link
-                                to="/book-consultation"
-                                className="inline-block bg-gradient-to-br from-yellow-500 to-yellow-700 text-black px-6 py-3 rounded-xl no-underline font-semibold text-sm shadow-lg shadow-yellow-500/30"
+                                to="/services/consultancy-and-compliance/book-consultation"
+                                className="inline-block bg-gradient-to-br from-primary-500 to-primary-700 text-white px-6 py-3 rounded-xl no-underline font-semibold text-sm shadow-lg shadow-primary-500/30"
                             >
                                 Book a Consult
                             </Link>

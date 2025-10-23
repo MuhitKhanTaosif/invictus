@@ -1,0 +1,152 @@
+
+Invictus Consultants — Empowering Growth. Inspiring Change.
+
+------------------------------------------------------------
+🏷️ Project Title
+Invictus Consultants — Empowering Growth. Inspiring Change.
+
+------------------------------------------------------------
+🌐 Overview
+Invictus Consultants helps individuals and organisations grow through training, consultancy, coaching, mentoring, and counselling.
+With over 20 years of experience in education, training, and business consultancy, the firm offers tailored, practical, and people-focused solutions that create lasting impact.
+
+------------------------------------------------------------
+🧭 Mission
+To provide the tools, guidance, and support people need to succeed — personally and professionally.
+
+🌠 Vision
+To build a community where learning, wellbeing, and leadership come together — inspiring people and organisations to reach their full potential and drive meaningful impact.
+
+------------------------------------------------------------
+🧩 Core Services
+
+1. Training & Professional Development
+- Accredited and non-accredited programs to help individuals and teams build real-world skills.
+- Example courses:
+  - Leadership and Management
+  - Communication Skills
+  - Compliance and Regulatory Training
+  - Workplace Wellbeing
+  - Customised Training Solutions
+- Approach:
+  - Learner-centred
+  - Interactive and engaging
+  - Tailored to organisational needs
+  - Led by industry experts
+
+2. Consultancy & Compliance
+- Business policy development, documentation, audits, and strategic planning.
+- Keeps organisations compliant and ahead of regulatory changes.
+- Focuses on measurable improvement and operational clarity.
+
+3. Coaching & Mentoring
+- Personalised sessions for individuals and workplace teams.
+- Builds leadership, confidence, and communication skills.
+- Focus on emotional intelligence and purposeful leadership.
+
+4. Counselling & Wellbeing Support
+- Confidential, compassionate support for mental health and career clarity.
+- Encourages resilience, balance, and personal growth.
+- Includes workplace wellbeing programs and individual counselling.
+
+5. First Aid & Mental Health Training (Partnership with ABC First Aid, RTO 3399)
+- HLTAID009 — Provide CPR
+- HLTAID010 — Provide Basic Emergency Life Support
+- HLTAID011 — Provide First Aid
+- HLTAID012 — Provide First Aid in Education & Care
+- HLTAID014 — Provide Advanced First Aid
+- Mental Health Support in Workplace and Community
+  - Focus: Recognition, response, and support for mental distress.
+  - Delivery: Online + face-to-face blended model.
+
+------------------------------------------------------------
+💼 Why Choose Invictus Consultants
+✅ 20+ years of experience in education, training & consultancy
+✅ Tailored, people-focused solutions
+✅ Trusted by individuals, workplaces & organisations
+✅ Commitment to real, lasting change
+✅ Proven expertise and practical approach
+✅ Partnership ecosystem with development and marketing professionals
+
+------------------------------------------------------------
+🏗️ Company Background
+- Originated from Phoenix Training Solutions Pty Ltd (est. 2011)
+- Rebranded as Invictus Consultants in 2022
+- Supported 1000+ clients and participants
+- Worked with 50+ organisations across Australia
+
+------------------------------------------------------------
+💻 Website Structure & Content Plan
+
+🏠 Home Page
+Hero Banner:
+  - Headline: Empowering Growth. Inspiring Change.
+  - Subheading: Helping people and organisations unlock their potential through training, compliance, coaching, mentoring, and counselling.
+  - Buttons: [Learn More] [Get in Touch]
+  - Background: Bright, diverse professional image (training or mentoring environment)
+
+Sections:
+  1. About Us (2-column layout)
+  2. Services (4 cards/grid)
+  3. Why Choose Us (icon checklist)
+  4. Contact Banner (full width)
+  5. Footer with contact info & social links
+
+👥 About Us Page
+- Mission, Vision, History, and Statistics
+- Highlights:
+  - 20+ years’ experience
+  - 1000+ clients
+  - 50+ organisations supported
+- Visuals: Icon boxes for numbers, diverse team images, bright backgrounds.
+
+🧩 Services Page
+Include 4 main service blocks + First Aid Training section.
+
+📚 Courses Page
+List of Professional Development & First Aid Courses
+Each with:
+- Course code (if applicable)
+- Description
+- Duration
+- Delivery mode
+- Certification validity
+
+📞 Contact Page
+Info:
+- Phone: 0490 132 692
+- Email: info@invictusconsultants.com.au
+- Website: www.invictusconsultants.com.au
+Buttons: [Book a Consultation] [Contact Us]
+Socials: LinkedIn | Facebook | Instagram
+
+------------------------------------------------------------
+🎨 Design Guidelines
+- Colour palette: Calming neutrals with a bold accent (navy, teal, or deep green)
+- Font pairing: Lato or Open Sans (body) + warm serif or display font (headings)
+- Tone: Professional, approachable, empowering
+- Imagery: Bright, positive, diverse, and inclusive work environments
+- Layout Style: Modern 2-column sections, card grids, clean spacing
+
+------------------------------------------------------------
+🧠 SEO & Metadata
+Meta Title: Invictus Consultants | Training, Compliance, Counselling & Coaching Australia
+Meta Description: Empowering people and organisations through training, compliance, coaching, counselling, and professional development.
+Keywords: Invictus Consultants, professional training, counselling, coaching, mentoring, business consultancy, compliance support, accredited training, professional development Australia
+
+------------------------------------------------------------
+🔗 Reference Sites
+- Workplace Education Specialist – https://spectraining.edu.au
+- Allens Training – https://allenstraining.com.au
+- ABC First Aid – https://abcfirstaid.com.au
+- Wave Learning – https://www.wavelearning.com.au
+- Design Reference – https://5before5solutions.com.au
+
+------------------------------------------------------------
+🧱 Technical Recommendations (for Development)
+- Frontend: React + Vite
+- Backend: Express.js (Node)
+- Hosting: Separate servers (frontend on Netlify/Vercel, backend on Render/VPS)
+- Database: MongoDB (for dynamic content, e.g., training courses, enquiries)
+
+- Contact Form: Secure endpoint with server-side validation

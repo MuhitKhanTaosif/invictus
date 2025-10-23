@@ -1,8 +1,11 @@
-const API_URL = import.meta.env.VITE_Backend_Base_API_URL;
+// const API_URL = import.meta.env.VITE_Backend_Base_API_URL;
 
 export async function adminCheck() {
   try {
-    const response = await fetch(`${API_URL}/user/me`, {
+    const response = await fetch(
+      // `${API_URL}/user/me`,
+      "",
+       {
       method: "GET",
       credentials: "include",
       headers: {

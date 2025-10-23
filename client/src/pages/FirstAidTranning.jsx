@@ -1,52 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import CourseCard from '../components/courses/CourseCard';
-
-const Container = styled.div`
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  color: #333;
-  text-align: center;
-  margin-bottom: 1rem;
-  font-weight: 700;
-
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.2rem;
-  color: #666;
-  text-align: center;
-  margin-bottom: 3rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
-
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-`;
-
-const CoursesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-`;
+import { motion } from 'motion/react';
+import CourseCard from '../components/CourseCard';
 
 const courses = [
     {
@@ -109,24 +63,95 @@ const courses = [
 
 export default function FirstAidTraining() {
     return (
-        <Container>
-            <Title>First Aid, Resuscitation & CPR</Title>
-            <Subtitle>
-                Comprehensive first aid training courses designed to equip individuals with life-saving skills and emergency response knowledge.
-                All courses are nationally recognized and meet Australian standards.
-            </Subtitle>
+        <div className="pt-20 min-h-screen bg-gradient-calm">
+            <div className="max-w-7xl mx-auto px-5 py-20">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-16"
+                >
+                    <h1 className="text-5xl md:text-6xl font-bold text-neutral-800 mb-6 font-heading">
+                        First Aid,
+                        <span className="block text-primary-600">Resuscitation & CPR</span>
+                    </h1>
+                    <p className="text-xl md:text-2xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                        Comprehensive first aid training courses designed to equip individuals with life-saving skills and emergency response knowledge.
+                        All courses are nationally recognized and meet Australian standards.
+                    </p>
+                </motion.div>
 
-            <CoursesGrid>
-                {courses.map((course) => (
-                    <CourseCard
-                        key={course.id}
-                        course={course}
-                    />
-                ))}
-            </CoursesGrid>
-        </Container>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {courses.map((course, index) => (
+                        <motion.div
+                            key={course.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                        >
+                            <CourseCard course={course} />
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="mt-20 bg-white rounded-3xl p-12 shadow-soft"
+                >
+                    <div className="text-center">
+                        <h2 className="text-3xl font-bold text-neutral-800 mb-6 font-heading">
+                            Why Choose Our First Aid Training?
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="text-center">
+                                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-3xl text-primary-600 mx-auto mb-4">
+                                    🏆
+                                </div>
+                                <h3 className="text-lg font-semibold text-neutral-800 mb-2 font-heading">
+                                    Nationally Recognized
+                                </h3>
+                                <p className="text-neutral-600 text-sm">
+                                    All courses meet Australian standards and are nationally recognized qualifications.
+                                </p>
+                            </div>
+                            
+                            <div className="text-center">
+                                <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center text-3xl text-accent-600 mx-auto mb-4">
+                                    👨‍⚕️
+                                </div>
+                                <h3 className="text-lg font-semibold text-neutral-800 mb-2 font-heading">
+                                    Expert Instructors
+                                </h3>
+                                <p className="text-neutral-600 text-sm">
+                                    Learn from qualified healthcare professionals with real-world experience.
+                                </p>
+                            </div>
+                            
+                            <div className="text-center">
+                                <div className="w-16 h-16 bg-sage-100 rounded-full flex items-center justify-center text-3xl text-sage-600 mx-auto mb-4">
+                                    🎯
+                                </div>
+                                <h3 className="text-lg font-semibold text-neutral-800 mb-2 font-heading">
+                                    Practical Training
+                                </h3>
+                                <p className="text-neutral-600 text-sm">
+                                    Hands-on practice with modern equipment and realistic scenarios.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </div>
     );
-};
+}
 
 
 

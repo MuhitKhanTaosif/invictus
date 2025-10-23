@@ -1,217 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
-const MentoringContainer = styled.div`
-  padding-top: 80px; /* Account for fixed header */
-  background: #f8f9fa;
-  min-height: 100vh;
-`;
-
-const MentoringContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 20px;
-`;
-
-const PageHeader = styled.div`
-  text-align: center;
-  margin-bottom: 80px;
-`;
-
-const PageTitle = styled(motion.h1)`
-  font-size: 3rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-`;
-
-const PageSubtitle = styled(motion.p)`
-  font-size: 1.3rem;
-  color: #666;
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
-`;
-
-const ServicesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
-`;
-
-const ServiceCard = styled(motion.div)`
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border-left: 4px solid #FFD700;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
-  }
-`;
-
-const ServiceIcon = styled.div`
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #FFD700, #B8860B);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: white;
-`;
-
-const ServiceTitle = styled.h3`
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 15px;
-`;
-
-const ServiceDescription = styled.p`
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
-`;
-
-const ApproachSection = styled.div`
-  background: white;
-  border-radius: 16px;
-  padding: 50px;
-  margin: 60px 0;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-`;
-
-const ApproachTitle = styled.h2`
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 40px;
-  text-align: center;
-`;
-
-const ApproachGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-`;
-
-const ApproachCard = styled.div`
-  text-align: center;
-  padding: 20px;
-`;
-
-const ApproachIcon = styled.div`
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #FFD700, #B8860B);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-size: 1.5rem;
-  color: white;
-`;
-
-const ApproachCardTitle = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
-`;
-
-const ApproachCardDescription = styled.p`
-  color: #666;
-  line-height: 1.6;
-`;
-
-const BenefitsSection = styled.div`
-  background: linear-gradient(135deg, #FFD700, #B8860B);
-  border-radius: 16px;
-  padding: 50px;
-  margin: 60px 0;
-  color: white;
-`;
-
-const BenefitsTitle = styled.h2`
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  text-align: center;
-`;
-
-const BenefitsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-`;
-
-const BenefitItem = styled.div`
-  text-align: center;
-  padding: 20px;
-`;
-
-const BenefitIcon = styled.div`
-  font-size: 2rem;
-  margin-bottom: 15px;
-`;
-
-const BenefitTitle = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-`;
-
-const BenefitDescription = styled.p`
-  opacity: 0.9;
-  line-height: 1.6;
-`;
-
-const CTASection = styled.div`
-  background: white;
-  border-radius: 16px;
-  padding: 50px;
-  text-align: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-`;
-
-const CTATitle = styled.h2`
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-`;
-
-const CTADescription = styled.p`
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 30px;
-`;
-
-const CTAButton = styled.button`
-  background: linear-gradient(135deg, #FFD700, #B8860B);
-  color: white;
-  border: none;
-  padding: 15px 40px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
-  }
-`;
+import { motion } from 'motion/react';
 
 const mentoringServices = [
   {
@@ -294,87 +82,133 @@ const benefits = [
 
 export default function CochingAndMentoring() {
   return (
-    <MentoringContainer>
-      <MentoringContent>
-        <PageHeader>
-          <PageTitle
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Mentoring & Coaching
-          </PageTitle>
-          <PageSubtitle
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+    <div className="pt-20 bg-gradient-calm min-h-screen">
+      <div className="max-w-7xl mx-auto px-5 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-5xl md:text-6xl font-bold text-neutral-800 mb-6 font-heading">
+            Mentoring &
+            <span className="block text-primary-600">Coaching</span>
+          </h1>
+          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
             Personalized mentoring and coaching services designed to support individual growth, career development, and personal transformation through expert guidance and proven methodologies.
-          </PageSubtitle>
-        </PageHeader>
+          </p>
+        </motion.div>
 
-        <ServicesGrid>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+        >
           {mentoringServices.map((service, index) => (
-            <ServiceCard
+            <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 border-l-4 border-primary-500 hover:-translate-y-2"
             >
-              <ServiceIcon>{service.icon}</ServiceIcon>
-              <ServiceTitle>{service.title}</ServiceTitle>
-              <ServiceDescription>{service.description}</ServiceDescription>
-            </ServiceCard>
+              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center text-3xl text-white mb-6">
+                {service.icon}
+              </div>
+              <h3 className="text-xl font-bold text-neutral-800 mb-4 font-heading">
+                {service.title}
+              </h3>
+              <p className="text-neutral-600 leading-relaxed">
+                {service.description}
+              </p>
+            </motion.div>
           ))}
-        </ServicesGrid>
+        </motion.div>
 
-        <ApproachSection>
-          <ApproachTitle>Our Approach</ApproachTitle>
-          <ApproachGrid>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="bg-white rounded-3xl p-12 shadow-soft mb-16"
+        >
+          <h2 className="text-3xl font-bold text-neutral-800 mb-12 text-center font-heading">
+            Our Approach
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {approaches.map((approach, index) => (
-              <ApproachCard
+              <motion.div
                 key={approach.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
               >
-                <ApproachIcon>{approach.icon}</ApproachIcon>
-                <ApproachCardTitle>{approach.title}</ApproachCardTitle>
-                <ApproachCardDescription>{approach.description}</ApproachCardDescription>
-              </ApproachCard>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full flex items-center justify-center text-2xl text-white mx-auto mb-6">
+                  {approach.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-neutral-800 mb-3 font-heading">
+                  {approach.title}
+                </h3>
+                <p className="text-neutral-600 leading-relaxed">
+                  {approach.description}
+                </p>
+              </motion.div>
             ))}
-          </ApproachGrid>
-        </ApproachSection>
+          </div>
+        </motion.div>
 
-        <BenefitsSection>
-          <BenefitsTitle>Benefits of Mentoring & Coaching</BenefitsTitle>
-          <BenefitsGrid>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-3xl p-12 text-white mb-16"
+        >
+          <h2 className="text-3xl font-bold mb-12 text-center font-heading">
+            Benefits of Mentoring & Coaching
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <BenefitItem
+              <motion.div
                 key={benefit.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
               >
-                <BenefitIcon>{benefit.icon}</BenefitIcon>
-                <BenefitTitle>{benefit.title}</BenefitTitle>
-                <BenefitDescription>{benefit.description}</BenefitDescription>
-              </BenefitItem>
+                <div className="text-4xl mb-4">{benefit.icon}</div>
+                <h3 className="text-lg font-semibold mb-3 font-heading">
+                  {benefit.title}
+                </h3>
+                <p className="text-primary-100 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </motion.div>
             ))}
-          </BenefitsGrid>
-        </BenefitsSection>
+          </div>
+        </motion.div>
 
-        <CTASection>
-          <CTATitle>Ready to Start Your Development Journey?</CTATitle>
-          <CTADescription>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="bg-white rounded-3xl p-12 shadow-soft text-center"
+        >
+          <h2 className="text-3xl font-bold text-neutral-800 mb-6 font-heading">
+            Ready to Start Your Development Journey?
+          </h2>
+          <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto">
             Let's discuss how our mentoring and coaching services can help you achieve your personal and professional goals.
-          </CTADescription>
-          <CTAButton>Schedule Consultation</CTAButton>
-        </CTASection>
-      </MentoringContent>
-    </MentoringContainer>
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-primary-500 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-300 hover:-translate-y-1"
+          >
+            Schedule Consultation
+          </motion.button>
+        </motion.div>
+      </div>
+    </div>
   );
-};
-
-
-
+}

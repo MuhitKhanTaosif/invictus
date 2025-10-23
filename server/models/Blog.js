@@ -27,7 +27,12 @@ const blogSchema = new mongoose.Schema({
   author: {
     type: String,
     required: true,
-    default: 'RPL Support Team'
+    default: 'Invictus Support Team'
+  },
+  status:{
+    type:Enumerator('Draft', 'Published', 'Scheduled', 'Arcived', 'Private'),
+    required: true,
+    default: 'Draft'
   },
   featuredImage: {
     type: String

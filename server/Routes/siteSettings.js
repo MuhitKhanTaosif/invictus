@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const SiteSettings = require('../models/SiteSettings');
-const { authenticateToken } = require('../routes/auth');
+const { authenticateToken } = require('./auth');
 
 // Get site settings (public)
 router.get('/public/site-settings', async (req, res) => {

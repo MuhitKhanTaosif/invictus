@@ -1,6 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
-const { sendContactFormEmail, sendFreeQuoteEmail } = require('../services/emailService');
+const { sendContactFormEmail, sendFreeQuoteEmail } = require('../Services/emailService');
 const router = express.Router();
 
 // Contact form email route

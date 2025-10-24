@@ -1,0 +1,44 @@
+{"level":"info","message":"Database Environment Variables:","timestamp":"2025-10-24 06:54:02:542"}
+{"level":"info","message":"DB_TYPE: mongodb","timestamp":"2025-10-24 06:54:02:542"}
+{"level":"info","message":"DB_HOST: localhost","timestamp":"2025-10-24 06:54:02:542"}
+{"level":"info","message":"DB_PORT: 3306","timestamp":"2025-10-24 06:54:02:542"}
+{"level":"info","message":"DB_NAME: invictus_consultants","timestamp":"2025-10-24 06:54:02:542"}
+{"level":"info","message":"DB_USER: root","timestamp":"2025-10-24 06:54:02:542"}
+{"level":"info","message":"DB_PASSWORD: [NOT SET]","timestamp":"2025-10-24 06:54:02:542"}
+{"level":"info","message":"🔌 Connecting to mongodb database...","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"Using MongoDB database","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"Connection attempt 1 of 3","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"MongoDB connection established successfully.","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"MongoDB connection test successful.","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"✅ MONGODB database connected successfully","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"🚀 Server running on port 5002 and accessible from external IPs","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"📊 Database: MONGODB","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"🌍 Environment: development","timestamp":"2025-10-24 06:54:03:543"}
+{"level":"info","message":"🔗 Health check: http://localhost:5002/health","timestamp":"2025-10-24 06:54:03:543"}
+{"ip":"127.0.0.1","level":"info","message":"Health check requested","timestamp":"2025-10-24 06:54:04:544","userAgent":"curl/7.81.0"}
+{"ip":"127.0.0.1","level":"info","message":"Health check requested","timestamp":"2025-10-24 06:55:13:5513","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0"}
+{"ip":"127.0.0.1","level":"info","message":"Health check requested","timestamp":"2025-10-24 06:55:13:5513","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0"}
+{"ip":"127.0.0.1","level":"warn","message":"404 - Route not found: GET /favicon.ico","timestamp":"2025-10-24 06:55:13:5513","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0"}
+{"ip":"127.0.0.1","level":"warn","message":"404 - Route not found: GET /favicon.ico","timestamp":"2025-10-24 06:55:13:5513","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0"}
+{"level":"info","message":"🛑 SIGINT received, shutting down gracefully...","timestamp":"2025-10-24 06:57:03:573"}
+{"level":"info","message":"MongoDB connection closed.","timestamp":"2025-10-24 06:57:03:573"}
+{"level":"info","message":"Database Environment Variables:","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"DB_TYPE: mongodb","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"DB_HOST: localhost","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"DB_PORT: 3306","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"DB_NAME: invictus_consultants","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"DB_USER: root","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"DB_PASSWORD: [NOT SET]","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"🔌 Connecting to mongodb database...","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"Using MongoDB database","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"Connection attempt 1 of 3","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"MongoDB connection established successfully.","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"MongoDB connection test successful.","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"✅ MONGODB database connected successfully","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"🚀 Server running on port 5002 and accessible from external IPs","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"📊 Database: MONGODB","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"🌍 Environment: development","timestamp":"2025-10-24 08:40:26:4026"}
+{"level":"info","message":"🔗 Health check: http://localhost:5002/health","timestamp":"2025-10-24 08:40:26:4026"}
+{"ip":"127.0.0.1","level":"info","message":"Health check requested","timestamp":"2025-10-24 08:40:28:4028","userAgent":"curl/7.81.0"}
+{"level":"info","message":"🛑 SIGINT received, shutting down gracefully...","timestamp":"2025-10-24 08:45:14:4514"}
+{"level":"info","message":"MongoDB connection closed.","timestamp":"2025-10-24 08:45:14:4514"}

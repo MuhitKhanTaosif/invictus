@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import { Navigate, useLocation } from 'react-router';
+import { Navigate, useLocation, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { useAuth } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 
 export default function AdminLoginPage() {
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: ''
     });
     const [loading, setLoading] = useState(false);
-    const { login, isAuthenticated } = useAuth();
+    const { login, isAuthenticated, user } = useAuth();
     const location = useLocation();
+    const navigate = useNavigate();
 
-    const from = location.state?.from?.pathname || '/admin';
+    const from = location.state?.from?.pathname || '/admin-invictus/application-state';
 
-    if (isAuthenticated) {
+    // Redirect if already authenticated and is admin
+    if (isAuthenticated && user?.role?.toLowerCase() === 'admin') {
         return <Navigate to={from} replace />;
     }
 
@@ -31,14 +33,18 @@ export default function AdminLoginPage() {
         setLoading(true);
 
         try {
-            const result = await login(formData.username, formData.password);
+            const result = await login(formData.email, formData.password);
 
             if (result.success) {
-                toast.success('Login successful!');
+                toast.success('Admin login successful!');
+                console.log('Login successful, navigating to dashboard...');
+                // Navigate immediately after successful login
+                navigate('/admin-invictus/application-state', { replace: true });
             } else {
                 toast.error(result.message || 'Login failed');
             }
         } catch (error) {
+            console.error('Login error:', error);
             toast.error('An error occurred during login');
         } finally {
             setLoading(false);
@@ -73,18 +79,19 @@ export default function AdminLoginPage() {
                     className="space-y-6"
                 >
                     <div className="space-y-2">
-                        <label htmlFor="username" className="block text-sm font-semibold text-neutral-700">
-                            Username
+                        <label htmlFor="email" className="block text-sm font-semibold text-neutral-700">
+                            Email Address
                         </label>
                         <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            value={formData.username}
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
                             onChange={handleChange}
                             required
                             disabled={loading}
                             className="w-full px-4 py-3 border-2 border-neutral-200 rounded-xl text-base transition-colors duration-300 focus:outline-none focus:border-primary-500 disabled:bg-neutral-100 disabled:cursor-not-allowed"
+                            placeholder="admin@invictus.com"
                         />
                     </div>
 

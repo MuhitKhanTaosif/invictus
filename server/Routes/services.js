@@ -1,66 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('../models/Category');
-const Course = require('../models/Course');
+const Services = require('../models/Services');
 const { body, validationResult } = require('express-validator');
+const { authenticateToken } = require('./auth');
 
-// Get all categories
+// Get all active services
 router.get('/', async (req, res) => {
   try {
-    const categories = await Category.find({ isActive: true })
-      .sort({ order: 1, name: 1 });
-    res.json(categories);
+    const services = await Services.find({ isActive: true })
+      .sort({ order: 1, title: 1 });
+    res.json(services);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// Get category by slug
+// Get service by slug
 router.get('/:slug', async (req, res) => {
   try {
-    const category = await Category.findOne({ 
+    const service = await Services.findOne({ 
       slug: req.params.slug, 
       isActive: true 
     });
     
-    if (!category) {
-      return res.status(404).json({ message: 'Category not found' });
+    if (!service) {
+      return res.status(404).json({ message: 'Service not found' });
     }
     
-    res.json(category);
+    res.json(service);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// Get courses by category slug
-router.get('/:slug/courses', async (req, res) => {
-  try {
-    const category = await Category.findOne({ 
-      slug: req.params.slug, 
-      isActive: true 
-    });
-    
-    if (!category) {
-      return res.status(404).json({ message: 'Category not found' });
-    }
-
-    const courses = await Course.find({ 
-      category: category._id, 
-      isActive: true 
-    }).populate('category', 'name slug color');
-
-    res.json(courses);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Create new category (Admin only)
-router.post('/', [
-  body('name').trim().isLength({ min: 1 }).withMessage('Name is required'),
+// Create new service (Admin only)
+router.post('/', authenticateToken, [
+  body('title').trim().isLength({ min: 1 }).withMessage('Title is required'),
   body('description').trim().isLength({ min: 1 }).withMessage('Description is required'),
-  body('icon').trim().isLength({ min: 1 }).withMessage('Icon is required')
+  body('shortDescription').trim().isLength({ min: 1 }).withMessage('Short description is required'),
+  body('icon').trim().isLength({ min: 1 }).withMessage('Icon is required'),
+  body('path').trim().isLength({ min: 1 }).withMessage('Path is required'),
+  body('features').isArray({ min: 1 }).withMessage('At least one feature is required'),
+  body('approach').isArray({ min: 1 }).withMessage('At least one approach is required')
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -68,23 +49,27 @@ router.post('/', [
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const category = new Category(req.body);
-    const savedCategory = await category.save();
-    res.status(201).json(savedCategory);
+    const service = new Services(req.body);
+    const savedService = await service.save();
+    res.status(201).json(savedService);
   } catch (error) {
     if (error.code === 11000) {
-      res.status(400).json({ message: 'Category with this name already exists' });
+      res.status(400).json({ message: 'Service with this title already exists' });
     } else {
       res.status(500).json({ message: error.message });
     }
   }
 });
 
-// Update category (Admin only)
-router.put('/:id', [
-  body('name').trim().isLength({ min: 1 }).withMessage('Name is required'),
+// Update service (Admin only)
+router.put('/:id', authenticateToken, [
+  body('title').trim().isLength({ min: 1 }).withMessage('Title is required'),
   body('description').trim().isLength({ min: 1 }).withMessage('Description is required'),
-  body('icon').trim().isLength({ min: 1 }).withMessage('Icon is required')
+  body('shortDescription').trim().isLength({ min: 1 }).withMessage('Short description is required'),
+  body('icon').trim().isLength({ min: 1 }).withMessage('Icon is required'),
+  body('path').trim().isLength({ min: 1 }).withMessage('Path is required'),
+  body('features').isArray({ min: 1 }).withMessage('At least one feature is required'),
+  body('approach').isArray({ min: 1 }).withMessage('At least one approach is required')
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -92,50 +77,50 @@ router.put('/:id', [
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const category = await Category.findByIdAndUpdate(
+    const service = await Services.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true, runValidators: true }
     );
 
-    if (!category) {
-      return res.status(404).json({ message: 'Category not found' });
+    if (!service) {
+      return res.status(404).json({ message: 'Service not found' });
     }
 
-    res.json(category);
+    res.json(service);
   } catch (error) {
     if (error.code === 11000) {
-      res.status(400).json({ message: 'Category with this name already exists' });
+      res.status(400).json({ message: 'Service with this title already exists' });
     } else {
       res.status(500).json({ message: error.message });
     }
   }
 });
 
-// Delete category (Admin only)
-router.delete('/:id', async (req, res) => {
+// Delete service (Admin only)
+router.delete('/:id', authenticateToken, async (req, res) => {
   try {
-    const category = await Category.findByIdAndDelete(req.params.id);
+    const service = await Services.findByIdAndDelete(req.params.id);
     
-    if (!category) {
-      return res.status(404).json({ message: 'Category not found' });
+    if (!service) {
+      return res.status(404).json({ message: 'Service not found' });
     }
 
-    res.json({ message: 'Category deleted successfully' });
+    res.json({ message: 'Service deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// Get all categories (including inactive - Admin only)
-router.get('/admin/all', async (req, res) => {
+// Get all services (including inactive - Admin only)
+router.get('/admin/all', authenticateToken, async (req, res) => {
   try {
-    const categories = await Category.find()
-      .sort({ order: 1, name: 1 });
-    res.json(categories);
+    const services = await Services.find()
+      .sort({ order: 1, title: 1 });
+    res.json(services);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-module.exports = router; 
+module.exports = router;

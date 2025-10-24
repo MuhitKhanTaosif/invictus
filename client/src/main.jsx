@@ -37,9 +37,10 @@ import AdminLoginPage from './pages/AdminPages/loginpage.jsx';
 import AdminDashboardPage from './pages/AdminPages/Dashboard.jsx';
 import AdminCategoriesPage from './pages/AdminPages/Categories.jsx';
 import AdminCourses from './pages/AdminPages/Courses.jsx';
+import AdminEventsPage from './pages/AdminPages/Events.jsx';
 
 //-------Loader
-import { adminCheck } from './Loader/adminCheck.jsx';
+import { adminCheck } from './Loader/adminCheck.js';
 
 const router = createBrowserRouter([
   {
@@ -140,6 +141,10 @@ const router = createBrowserRouter([
           {
             path: "categories",
             element: <AdminCategoriesPage />,
+          },
+          {
+            path: "events",
+            element: <AdminEventsPage />,
           },
         ],
       },

@@ -1,165 +1,142 @@
-const { DataTypes } = require('sequelize');
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const { sequelize } = require('../config/database'); // This is the correct, single import
-const { roles } = require('../config/roles');
 
-const User = sequelize.define('User', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
+// Define the User schema
+const userSchema = new mongoose.Schema({
   email: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
+    type: String,
+    required: [true, 'Email is required'],
     unique: true,
-    validate: {
-      isEmail: true
-    }
+    lowercase: true,
+    trim: true,
+    match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email']
   },
   password: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-    validate: {
-      len: [6, 255]
-    }
+    type: String,
+    required: [true, 'Password is required'],
+    minlength: [6, 'Password must be at least 6 characters long'],
+    maxlength: [255, 'Password cannot exceed 255 characters']
   },
   first_name: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-    validate: {
-      len: [1, 100]
-    }
+    type: String,
+    required: [true, 'First name is required'],
+    trim: true,
+    minlength: [1, 'First name must be at least 1 character long'],
+    maxlength: [100, 'First name cannot exceed 100 characters']
   },
   last_name: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-    validate: {
-      len: [1, 100]
-    }
+    type: String,
+    required: [true, 'Last name is required'],
+    trim: true,
+    minlength: [1, 'Last name must be at least 1 character long'],
+    maxlength: [100, 'Last name cannot exceed 100 characters']
   },
   phone: {
-    type: DataTypes.STRING(20),
-    allowNull: true,
+    type: String,
+    trim: true,
     validate: {
-      is: /^[\+]?[\d\s\-\(\)]{7,15}$/
+      validator: function(v) {
+        return !v || /^[\+]?[\d\s\-\(\)]{7,15}$/.test(v);
+      },
+      message: 'Please enter a valid phone number'
     },
-    set(value) {
+    set: function(value) {
       if (value) {
-        this.setDataValue('phone', value.replace(/[\s\-\(\)]/g, ''));
-      } else {
-        this.setDataValue('phone', value);
+        return value.replace(/[\s\-\(\)]/g, '');
       }
+      return value;
     }
-  },
-  role: {
-    type: DataTypes.ENUM('admin', 'manager', 'customer'),
-    defaultValue: 'customer',
-    allowNull: false
   },
   status: {
-    type: DataTypes.ENUM('active', 'inactive', 'suspended'),
-    defaultValue: 'active',
-    allowNull: false
+    type: String,
+    enum: ['active', 'inactive', 'suspended'],
+    default: 'active',
+    required: true
   },
   email_verified: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false
+    type: Boolean,
+    default: false
   },
   email_verification_token: {
-    type: DataTypes.STRING(255),
-    allowNull: true
+    type: String,
+    default: null
   },
   password_reset_token: {
-    type: DataTypes.STRING(255),
-    allowNull: true
+    type: String,
+    default: null
   },
   password_reset_expires: {
-    type: DataTypes.DATE,
-    allowNull: true
+    type: Date,
+    default: null
   },
   last_login: {
-    type: DataTypes.DATE,
-    allowNull: true
+    type: Date,
+    default: null
   },
   login_attempts: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0
+    type: Number,
+    default: 0
   },
   locked_until: {
-    type: DataTypes.DATE,
-    allowNull: true
+    type: Date,
+    default: null
   },
   avatar: {
-    type: DataTypes.STRING(255),
-    allowNull: true
+    type: String,
+    default: null
   },
   preferences: {
-    type: DataTypes.JSON,
-    allowNull: true,
-    defaultValue: {}
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
   },
   stripe_customer_id: {
-    type: DataTypes.STRING(255),
-    allowNull: true
+    type: String,
+    default: null
   },
   address: {
-    type: DataTypes.JSON,
-    allowNull: true
-  },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  },
-  updated_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
+    type: mongoose.Schema.Types.Mixed,
+    default: null
   }
 }, {
-  tableName: 'users',
-  timestamps: true,
-  createdAt: 'created_at',
-  updatedAt: 'updated_at',
-  hooks: {
-    beforeCreate: async (user) => {
-      if (user.password) {
-        user.password = await bcrypt.hash(user.password, 12);
-      }
-    },
-    beforeUpdate: async (user) => {
-      if (user.changed('password')) {
-        user.password = await bcrypt.hash(user.password, 12);
-      }
-    }
+  timestamps: { 
+    createdAt: 'created_at', 
+    updatedAt: 'updated_at' 
+  },
+  collection: 'users'
+});
+
+// Pre-save middleware to hash password
+userSchema.pre('save', async function(next) {
+  // Only hash the password if it has been modified (or is new)
+  if (!this.isModified('password')) return next();
+  
+  try {
+    // Hash password with cost of 12
+    this.password = await bcrypt.hash(this.password, 12);
+    next();
+  } catch (error) {
+    next(error);
   }
 });
 
 // Instance methods
-User.prototype.comparePassword = async function(candidatePassword) {
+userSchema.methods.comparePassword = async function(candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-User.prototype.getFullName = function() {
+userSchema.methods.getFullName = function() {
   return `${this.first_name} ${this.last_name}`;
 };
 
-User.prototype.isAdmin = function() {
-  return this.role === 'admin';
-};
-
-User.prototype.isManager = function() {
-  return this.role === 'manager' || this.role === 'admin';
-};
-
-User.prototype.isActive = function() {
+userSchema.methods.isActive = function() {
   return this.status === 'active';
 };
 
-User.prototype.isLocked = function() {
+userSchema.methods.isLocked = function() {
   return this.locked_until && this.locked_until > new Date();
 };
 
-User.prototype.incrementLoginAttempts = async function() {
+userSchema.methods.incrementLoginAttempts = async function() {
   this.login_attempts += 1;
 
   // Lock account after 5 failed attempts for 15 minutes
@@ -170,76 +147,68 @@ User.prototype.incrementLoginAttempts = async function() {
   await this.save();
 };
 
-User.prototype.resetLoginAttempts = async function() {
+userSchema.methods.resetLoginAttempts = async function() {
   this.login_attempts = 0;
   this.locked_until = null;
   this.last_login = new Date();
   await this.save();
 };
 
-// Class methods
-User.findByEmail = function(email) {
-  return this.findOne({ where: { email: email.toLowerCase() } });
+// Static methods
+userSchema.statics.findByEmail = function(email) {
+  return this.findOne({ email: email.toLowerCase() });
 };
 
-User.createUser = async function(userData) {
-  const user = await this.create(userData);
+userSchema.statics.createUser = async function(userData) {
+  const user = new this(userData);
+  await user.save();
   return user;
 };
 
-User.updateUser = async function(id, updateData) {
-  const user = await this.findByPk(id);
+userSchema.statics.updateUser = async function(id, updateData) {
+  const user = await this.findById(id);
   if (!user) {
     throw new Error('User not found');
   }
 
-  await user.update(updateData);
+  Object.assign(user, updateData);
+  await user.save();
   return user;
 };
 
-User.deleteUser = async function(id) {
-  const user = await this.findByPk(id);
+userSchema.statics.deleteUser = async function(id) {
+  const user = await this.findById(id);
   if (!user) {
     throw new Error('User not found');
   }
 
-  await user.destroy();
+  await this.findByIdAndDelete(id);
   return true;
 };
 
-// Scopes
-User.addScope('active', {
-  where: { status: 'active' }
-});
+// Query helpers (equivalent to Sequelize scopes)
+userSchema.query.active = function() {
+  return this.where({ status: 'active' });
+};
 
-User.addScope('admins', {
-  where: { role: 'admin' }
-});
+userSchema.query.verified = function() {
+  return this.where({ email_verified: true });
+};
 
-User.addScope('managers', {
-  where: { role: ['admin', 'manager'] }
-});
+// Create the User model
+const User = mongoose.model('User', userSchema);
 
-User.addScope('customers', {
-  where: { role: 'customer' }
-});
+// Transform the output when converting to JSON
+userSchema.methods.toJSON = function() {
+  const userObject = this.toObject();
 
-User.addScope('verified', {
-  where: { email_verified: true }
-});
-
-// Virtual fields
-User.prototype.toJSON = function() {
-  const values = Object.assign({}, this.get());
+  // Remove sensitive fields
+  delete userObject.password;
+  delete userObject.email_verification_token;
+  delete userObject.password_reset_token;
+  delete userObject.password_reset_expires;
   
-  // Add permissions to user object
-  values.permissions = roles[this.role]?.permissions || [];
-
-  delete values.password;
-  delete values.email_verification_token;
-  delete values.password_reset_token;
-  delete values.password_reset_expires;
-  return values;
+  return userObject;
 };
 
 module.exports = User;

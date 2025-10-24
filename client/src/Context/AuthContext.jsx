@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
         const verifyToken = async () => {
             if (token) {
                 try {
-                    const response = await axios.get('/api/auth/verify');
+                    const response = await axios.get('http://localhost:5002/api/auth/verify');
                     setUser(response.data.user);
                 } catch (error) {
                     console.error('Token verification failed:', error);
@@ -43,18 +43,22 @@ export const AuthProvider = ({ children }) => {
         verifyToken();
     }, [token]);
 
-    const login = async (username, password) => {
+    const login = async (email, password) => {
         try {
-            const response = await axios.post('/api/auth/login', {
-                username,
+            const response = await axios.post('http://localhost:5002/api/auth/login', {
+                email,
                 password
             });
 
             const { token: newToken, user: userData } = response.data;
 
+            // Update state immediately
             setToken(newToken);
             setUser(userData);
             localStorage.setItem('token', newToken);
+            
+            // Set axios default header immediately
+            axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
 
             return { success: true };
         } catch (error) {
@@ -75,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
     const changePassword = async (currentPassword, newPassword) => {
         try {
-            await axios.put('/api/auth/change-password', {
+            await axios.put('http://localhost:5002/api/auth/change-password', {
                 currentPassword,
                 newPassword
             });
